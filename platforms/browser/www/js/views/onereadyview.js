@@ -1,20 +1,82 @@
 import m from 'mithril';
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
+import position from "../models/position.js";
 
 import { oneReadyModel } from "../models/oneready.js";
 
-// var present = getOneInvoice.present;
+import locationIcon from "../../location.png";
+import "leaflet/dist/images/marker-icon-2x.png";
+import "leaflet/dist/images/marker-icon.png";
+import "leaflet/dist/images/marker-shadow.png";
 
 
-// let year = {
-//     oninit: function(vnode) {
-//         nobel.load(vnode.attrs.year);
-//     },
-//     view: function(vnode) {
-//         return m("main.container", [
-//             m("h1", vnode.attrs.year)
-//         ]);
-//     }
-// };
+
+var map;
+var locationMarker = L.icon({
+    iconUrl: locationIcon,
+    iconSize:     [24, 24],
+    iconAnchor:   [12, 12],
+    popupAnchor:  [0, 0]
+});
+
+function showMap() {
+    position.getPosition();
+    var places = {
+        "BTH": [56.181932, 15.590525],
+        "Stortorget": [56.160817, 15.586703],
+        "Hoglands Park": [56.164077, 15.585887],
+        "Rödebybacken": [56.261121, 15.628609]
+    };
+
+    map = L.map('map').setView(places["BTH"], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',    {
+        attribution: `&copy;
+        <a href="https://www.openstreetmap.org/copyright">
+        OpenStreetMap</a> contributors`
+    }).addTo(map);
+
+    for (var place in places) {
+        if (places.hasOwnProperty(place)) {
+            L.marker(places[place]).addTo(map).bindPopup(place);
+        }
+    }
+
+    var geocoder = new OpenStreetMapProvider();
+
+    var addresses = [
+        "Bastionsgatan 1, Karlskrona",
+        "Kärleksstigen 1, Karlskrona"
+    ];
+
+    for (var i = 0; i < addresses.length; i++) {
+        geocoder
+            .search({ query: addresses[i] })
+            .then(function(result) {
+                if (result.length > 0) {
+                    L.marker(
+                        [result[0].y, result[0].x]
+                    ).addTo(map).bindPopup(result[0].label);
+                }
+            });
+    }
+}
+
+function showPosition() {
+    if (position.currentPosition.latitude && position.currentPosition.longitude) {
+        L.marker(
+            [
+                position.currentPosition.latitude,
+                position.currentPosition.longitude
+            ],
+            {
+                icon: locationMarker
+            }
+        ).addTo(map).bindPopup("Din plats");
+    }
+}
 
 
 
@@ -22,6 +84,7 @@ var onereadyview = {
     oninit: function(vnode) {
         oneReadyModel.getOneReady(vnode.attrs.id);
     },
+    oncreate: showMap,
     view: function() {
         return m("main.container", [
             m("nav.top-nav", [
@@ -30,67 +93,23 @@ var onereadyview = {
                         href: "/ready",
                         oncreate: m.route.link
                     }, "arrow_back"),
-                    // m("span.icon-text", "Tillbaka"),
                 ])
             ]),
             m("h3", oneReadyModel.readyArray.name),
-            // console.log("vnode.attrs"),
-            // console.log(oneInvoiceModel.invoiceArray),
             m("table", [
                 m("tr", [
-                    // m("td", "Namn"),
                     m("td", oneReadyModel.readyArray.address),
-                    // m("td", " "),
-
                 ]),
                 m("tr", [
-                    // m("td", "Fakturadatum"),
                     m("td", oneReadyModel.readyArray.zip + " " + oneReadyModel.readyArray.city),
-                    // m("td", oneReadyModel.readyArray.city),
-                    // m("td", "Fakturadatum"),
-                    // m("td", "Förfallodatum")
                 ]),
-                // m("tr", [
-                //     // m("td", "Fakturadatum"),
-                //     m("td", oneInvoiceModel.invoiceArray.zip + " " +
-                //     oneInvoiceModel.invoiceArray.city),
-                //     m("td", " "),
-                //     // m("td", "Fakturadatum"),
-                //     // m("td", "Förfallodatum")
-                // ]),
-                // m("tr", [
-                //     // m("td", "Fakturadatum"),
-                //     m("td", oneInvoiceModel.invoiceArray.country),
-                //     m("td", " "),
-                //     // m("td", "Fakturadatum"),
-                //     // m("td", "Förfallodatum")
-                // ]),
                 m("tr", [
-                    // m("td", "Fakturadatum"),
                     m("td", " "),
                     m("td", " "),
-                    // m("td", "Fakturadatum"),
-                    // m("td", "Förfallodatum")
                 ]),
-                // m("tr", [
-                //     m("td", "Att betala"),
-                //     m("td", oneInvoiceModel.invoiceArray.total_price),
-                //     // m("td", "Fakturadatum"),
-                //     // m("td", "Förfallodatum")
-                // ]),
-                // m("tr", [
-                //     m("td", "Beställningsdatum"),
-                //     m("td", oneInvoiceModel.invoiceArray.creation_date),
-                //     // m("td", "Fakturadatum"),
-                //     // m("td", "Förfallodatum")
-                // ]),
-                // m("tr", [
-                //     m("td", "Betalas senast"),
-                //     m("td", oneInvoiceModel.invoiceArray.due_date),
-                //     // m("td", "Fakturadatum"),
-                //     // m("td", "Förfallodatum")
-                // ]),
-            ])
+            ]),
+            m("h1", "Map"),
+            m("div#map.map", "")
         ]);
     }
 };

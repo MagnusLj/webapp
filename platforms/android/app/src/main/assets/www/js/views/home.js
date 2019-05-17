@@ -17,13 +17,13 @@ var home = {
                     }, "home"),
                     m("span.icon-text", "Hem"),
                 ]),
-                // m("a", [
-                //     m("i.material-icons", {
-                //         href: "/list",
-                //         oncreate: m.route.link
-                //     }, "local_shipping"),
-                //     m("span.icon-text", "Leveranser"),
-                // ]),
+                m("a", [
+                    m("i.material-icons", {
+                        href: "/ready",
+                        oncreate: m.route.link
+                    }, "assignment_turned_in"),
+                    m("span.icon-text", "Klara"),
+                ]),
                 m("a", [
                     m("i.material-icons", {
                         href: "/login",

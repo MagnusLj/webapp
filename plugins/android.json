@@ -12,6 +12,9 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "se.dbwebb.lager"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "se.dbwebb.lager"
     }
   },
   "dependent_plugins": {}

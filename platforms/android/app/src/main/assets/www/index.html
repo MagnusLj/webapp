@@ -19,16 +19,7 @@
 -->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://lager.emilfolino.se data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; media-src *; font-src https://fonts.gstatic.com;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://lager.emilfolino.se https://nominatim.openstreetmap.org data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' https://*.tile.openstreetmap.org data: content:; media-src *; font-src https://fonts.gstatic.com;">
         <meta name="format-detection" content="telephone=no">
         <!-- <meta name="msapplication-tap-highlight" content="no"> -->
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -38,10 +29,10 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="style.min.css" />
         <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
-        <title>Lager 5</title>
+        <title>Lager 6</title>
     </head>
     <body>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="dist/app.js"></script>
+        <script type="text/javascript" src="app.js"></script>
     </body>
 </html>

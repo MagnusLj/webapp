@@ -12,6 +12,8 @@ import { login } from "./views/login.js";
 import { newuser } from "./views/newuser.js";
 import { form2 } from "./views/form2.js";
 import { oneinvoiceview } from "./views/oneinvoiceview.js";
+import { ready } from "./views/ready.js";
+import { onereadyview } from "./views/onereadyview.js";
 // var m = require("mithril").default;
 // var hello = require("./views/hello.js")
 
@@ -29,7 +31,9 @@ var app = {
             "/invoices": invoices,
             "/newuser": newuser,
             "/form2": form2,
-            "/oneinvoiceview/:id": oneinvoiceview
+            "/oneinvoiceview/:id": oneinvoiceview,
+            "/ready": ready,
+            "/onereadyview/:id": onereadyview
             // ,
             // "/product/:id": product
         });
