@@ -1,4 +1,5 @@
 import m from "mithril";
+import position from "../models/position.js";
 
 // import auth from "./auth.js";
 

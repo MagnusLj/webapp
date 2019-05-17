@@ -65,7 +65,12 @@ function showMap() {
 }
 
 function showPosition() {
+    console.log("showPosition");
     if (position.currentPosition.latitude && position.currentPosition.longitude) {
+        console.log("showPosition2");
+        console.log(position.currentPosition.latitude);
+        console.log(" \n");
+        console.log(position.currentPosition.longitude);
         L.marker(
             [
                 position.currentPosition.latitude,
@@ -83,9 +88,16 @@ function showPosition() {
 var onereadyview = {
     oninit: function(vnode) {
         oneReadyModel.getOneReady(vnode.attrs.id);
+        position.getPosition();
     },
-    oncreate: showMap,
+    oncreate: function() {
+        showMap();
+        // showPosition();
+        // position.getPosition();
+
+    },
     view: function() {
+        showPosition();
         return m("main.container", [
             m("nav.top-nav", [
                 m("a", [
