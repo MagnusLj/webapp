@@ -6,7 +6,7 @@ const position = {
     currentPosition: {},
 
     getPosition: function() {
-        console.log("getPosition");
+        // console.log("getPosition");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position.geoSuccess,
@@ -17,13 +17,13 @@ const position = {
 
     geoSuccess: function(pos) {
         position.currentPosition = pos.coords;
-        console.log("geoSuccess");
-        console.log(pos.coords);
+        // console.log("geoSuccess");
+        // console.log(pos.coords);
         m.redraw();
     },
 
     geoError: function(error) {
-        console.log("geoError");
+        // console.log("geoError");
         console.log('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }

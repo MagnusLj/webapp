@@ -18,21 +18,21 @@ var readyModel = {
         }).then(function(result) {
             readyModel.readies = [];
             // console.log("getReadies");
-            console.log(result.data);
-            console.log("Length:");
-            console.log(result.data.length);
+            // console.log(result.data);
+            // console.log("Length:");
+            // console.log(result.data.length);
             for (var i=0; i< result.data.length; i++) {
                 if (result.data[i].status_id == 200) {
                     readyModel.readies.push(result.data[i]);
                 }
             }
-            console.log("readies:");
-            console.log(readyModel.readies);
+            // console.log("readies:");
+            // console.log(readyModel.readies);
             // readyModel.readies = result.data;
         });
     },
 
-    currentInvoice: {},
+    // currentInvoice: {},
 
     save: function() {
         return m.request({
