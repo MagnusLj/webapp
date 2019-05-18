@@ -34,8 +34,10 @@ function showMap() {
     var addresses = [
         // "Bastionsgatan 1, Karlskrona",
         // "Kärleksstigen 1, Karlskrona",
-        "Lilla Varvsgatan 14, Malmö"
+        // "Lilla Varvsgatan 14, Malmö"
     ];
+
+    addresses = oneReadyModel.addressArray;
 
     map = L.map('map').setView([56.181932, 15.590525], 13);
 
@@ -138,6 +140,11 @@ var onereadyview = {
     oninit: function(vnode) {
         oneReadyModel.getOneReady(vnode.attrs.id);
         position.getPosition();
+        oneReadyModel.addressArray = [];
+        oneReadyModel.addressArray.push(vnode.attrs.address);
+        // showMap.addresses.push(vnode.attrs.address);
+        console.log("vnode.attrs.address");
+        console.log(vnode.attrs.address);
     },
     oncreate: function() {
         showMap();
@@ -157,6 +164,8 @@ var onereadyview = {
                 ])
             ]),
             m("h3", oneReadyModel.readyArray.name),
+            console.log("oneReadyModel.addressArray"),
+            console.log(oneReadyModel.addressArray),
             m("table", [
                 m("tr", [
                     m("td", oneReadyModel.readyArray.address),

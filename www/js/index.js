@@ -33,7 +33,7 @@ var app = {
             "/form2": form2,
             "/oneinvoiceview/:id": oneinvoiceview,
             "/ready": ready,
-            "/onereadyview/:id": onereadyview
+            "/onereadyview/:id/:address": onereadyview
             // ,
             // "/product/:id": product
         });

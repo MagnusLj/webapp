@@ -21,7 +21,7 @@ var readyTable = {
                 return m("tr", [
 
                     m("td", {href: "/onereadyview/" +
-                       order.id, oncreate: m.route.link }, order.name),
+                       order.id + "/" + order.address, oncreate: m.route.link }, order.name),
 
                     m("td", order.id),
                 ]);
