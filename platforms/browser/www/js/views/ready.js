@@ -39,7 +39,8 @@ var noReadies = {
 var ready = {
     oninit: readyModel.getReadies,
     view: function () {
-        return m("main.container",[
+        return m("main.container", [
+            m("div.slide-up", [
             m("h1", "Ordrar"),
             // invoiceModel.getInvoices.length > 0 ?
             readyModel.readies.length > 0 ?
@@ -49,7 +50,7 @@ var ready = {
             // console.log(invoiceModel.invoices),
             m("br"),
             m("br"),
-            m("br"),
+            m("br")]),
             // m("a.button", { href: "/form2", oncreate: m.route.link}, "SKAPA NY FAKTURA"),
 
             m("nav.bottom-nav", [

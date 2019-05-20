@@ -150,11 +150,19 @@ var onereadyview = {
         showMap();
         // showPosition();
         // position.getPosition();
-
+    },
+    onbeforeremove: function(vnode) {
+        vnode.dom.classList.add("slide-out");
+        return new Promise(function(resolve) {
+            setTimeout(function() {
+                vnode.dom.classList.remove("slide-out");
+                resolve();
+            }, 290);
+        });
     },
     view: function() {
         showPosition();
-        return m("main.container", [
+        return m("div.slide-in.main.container", [
             m("nav.top-nav", [
                 m("a", [
                     m("i.material-icons", {
@@ -178,7 +186,8 @@ var onereadyview = {
                     m("td", " "),
                 ]),
             ]),
-            m("h1", "Map"),
+            m("br"),
+            // m("h1", "Map"),
             m("div#map.map", "")
         ]);
     }

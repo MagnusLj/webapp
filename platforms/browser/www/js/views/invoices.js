@@ -89,19 +89,12 @@ var invoices = {
                     }, "home"),
                     m("span.icon-text", "Hem"),
                 ]),
-                // m("a", [
-                //     m("i.material-icons", {
-                //         href: "/list",
-                //         oncreate: m.route.link
-                //     }, "local_shipping"),
-                //     m("span.icon-text", "Leveranser"),
-                // ]),
                 m("a", [
                     m("i.material-icons", {
-                        href: "/login",
+                        href: "/ready",
                         oncreate: m.route.link
-                    }, "exit_to_app"),
-                    m("span.icon-text", "Logga in"),
+                    }, "assignment_turned_in"),
+                    m("span.icon-text", "Klara"),
                 ]),
                 m("a.active", [
                     m("i.material-icons", {

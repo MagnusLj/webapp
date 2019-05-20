@@ -2,7 +2,7 @@
     height: 100%;
     // color: #fcfcfc;
     // padding: 1rem;
-    animation: moveFromRight 0.2s ease-in;
+    animation: moveFromRight 0.3s ease-in;
 }
 
 // .slide-in a {
@@ -10,7 +10,7 @@
 // }
 
 .slide-out {
-    animation: moveToRight 0.2s ease-in;
+    animation: moveToRight 0.3s ease-in;
 }
 
 @keyframes moveFromRight {
@@ -19,4 +19,15 @@
 
 @keyframes moveToRight {
     to { transform: translateX(100%); }
+}
+
+.slide-up {
+    height: 100%;
+    // color: #fcfcfc;
+    // padding: 1rem;
+    animation: moveUp 0.2s;
+}
+
+@keyframes moveUp {
+    from { transform: translateY(20%); }
 }

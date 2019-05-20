@@ -1,14 +1,14 @@
 import m from 'mithril';
 // import { menu } from "./menu.js";
 
-
 var home = {
     view: function() {
         return m("main.container", [
+            m("div.slide-up", [
             m("h1", "Infinity Warehouses"),
             m("p", "Hej och välkomna till Infinity. Här hittar du en massa bra saker."),
             m("p", "Ta med dig dina vänner."),
-            m("img", {src: "lager.jpg", width: '100%'}),
+            m("img", {src: "lager.jpg", width: '100%'})]),
             m("nav.bottom-nav", [
                 m("a.active", [
                     m("i.material-icons", {

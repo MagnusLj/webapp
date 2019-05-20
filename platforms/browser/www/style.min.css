@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import 'sass/normalize.min.css';
 .container {
-  padding: 1rem;
+  padding: 0.2rem;
   margin-bottom: 3.2rem;
   margin-top: 2rem;
   line-height: 1.4;
@@ -327,16 +327,16 @@ p {
 }
 .map {
   width: 100%;
-  height: 32rem;
+  height: 21rem;
 }
 
 .slide-in {
   height: 100%;
-  animation: moveFromRight 0.2s ease-in;
+  animation: moveFromRight 0.3s ease-in;
 }
 
 .slide-out {
-  animation: moveToRight 0.2s ease-in;
+  animation: moveToRight 0.3s ease-in;
 }
 
 @keyframes moveFromRight {
@@ -347,6 +347,16 @@ p {
 @keyframes moveToRight {
   to {
     transform: translateX(100%);
+  }
+}
+.slide-up {
+  height: 100%;
+  animation: moveUp 0.2s;
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(20%);
   }
 }
 
