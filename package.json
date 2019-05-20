@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d",
     "watch": "webpack -d --watch",
-    "style": "sass base.scss style.min.css",
-    "style-min": "sass base.scss style.min.css --style compressed"
+    "style": "sass ./www/base.scss ./www/style.min.css",
+    "style-min": "sass ./www/base.scss ./www/style.min.css --style compressed"
   },
   "keywords": [
     "ecosystem:cordova"

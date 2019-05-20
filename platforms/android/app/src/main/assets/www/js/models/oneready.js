@@ -1,4 +1,5 @@
 import m from "mithril";
+import position from "../models/position.js";
 
 // import auth from "./auth.js";
 
@@ -7,7 +8,7 @@ var oneReadyModel = {
     // apiKey: "fc647610cb500423ea563a4db69f6978",
     apiKey: "c34b66717ff6f7781fee7b866489a54c",
     readyArray: [],
-
+    addressArray: [],
 
     // url: deliveries.baseURL + "?api_key=" + deliveries.apiKey
 
